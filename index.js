@@ -32,20 +32,19 @@ function saveRspFiles(filename, dir){
       rsps.push([startStr, item].join('\n'));
       startStr = '';
     }
+    
+    var index = 0;
+    rsps.forEach(function(item){
+      fs.writeFile(path.join(dir, 'rsp_' + index + '.txt'), item, function(err){
+        if(err){
+          console.log('err', err);
+          return;
+        }
+      });
+      index++;
+    })
   })
 
-  // console.log(rsps);
-
-  var index = 0;
-  rsps.forEach(function(item){
-    fs.writeFile(path.join(dir, 'rsp_' + index + '.txt'), item, function(err){
-      if(err){
-        console.log('err', err);
-        return;
-      }
-    });
-    index++;
-  })
 })
 }
 
