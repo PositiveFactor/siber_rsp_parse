@@ -2,6 +2,6 @@
   parse testers rsp
 
 ## HOW TO USE
-  `node index`
+  `$ node index`
   
   Existing files will not be overwritten(need to remove them for overwriting).
