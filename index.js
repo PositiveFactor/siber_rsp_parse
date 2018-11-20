@@ -35,6 +35,10 @@ function saveRspFiles(filename, dir){
         rsps.push([startStr, item].join('\n'))
         startStr = ''
       }
+      else if(startStr != ''){
+        rsps.push(startStr)
+        startStr = ''
+      }
     })
   
     var index = 0;
