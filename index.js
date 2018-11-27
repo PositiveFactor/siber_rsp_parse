@@ -14,7 +14,8 @@ function getFilesList(destPath, extensions){
 function isResponseString(str){
   return str.startsWith('RESULT') ||
          str.startsWith('REALITY_CHECK_AFTER') ||
-         str.startsWith('MESSAGE_TYPE')
+         str.startsWith('MESSAGE_TYPE') ||
+         str.startsWith('TERMINATE')
 }
 
 function saveRspFiles(filename, dir){
@@ -28,6 +29,8 @@ function saveRspFiles(filename, dir){
     var sp = data.toString().split('\n')
     var startStr = ''
     sp.forEach(function(item){
+      console.log('item', item)
+      console.log('isResponseString(item)', isResponseString(item))
       if(	isResponseString(item) ){
         startStr = item
       }
@@ -40,6 +43,11 @@ function saveRspFiles(filename, dir){
         startStr = ''
       }
     })
+    
+    if(startStr != ''){
+      rsps.push(startStr)
+      startStr = ''
+    }
   
     var index = 0;
     rsps.forEach(function(item){
