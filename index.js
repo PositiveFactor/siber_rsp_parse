@@ -74,7 +74,7 @@ function start(){
       console.log(base, 'exist')
     }
     else {
-      fs.mkdir(base)
+      fs.mkdir(base, function(){})
       saveRspFiles(f, base)
     }
   })
